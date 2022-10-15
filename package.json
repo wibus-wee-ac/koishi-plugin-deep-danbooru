@@ -15,7 +15,9 @@
       "en": "Analyzing images via deepdanbooru",
       "zh": "使用 deepdanbooru 分析图片的插件"
     },
-    "locales": ["zh"]
+    "locales": [
+      "zh"
+    ]
   },
   "license": "AGPLv3",
   "repository": {
@@ -43,6 +45,12 @@
     "koishi": "^4.9.5"
   },
   "devDependencies": {
-    "atsc": "^1.1.2"
+    "@types/node": "^18.11.0",
+    "atsc": "^1.1.2",
+    "typescript": "^4.8.4"
+  },
+  "dependencies": {
+    "@koishijs/plugin-help": "^1.2.5",
+    "koishi": "^4.9.5"
   }
 }
