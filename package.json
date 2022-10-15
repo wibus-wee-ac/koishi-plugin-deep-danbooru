@@ -1,7 +1,6 @@
 {
   "name": "koishi-plugin-deep-danbooru",
   "description": "Analyzing images via deepdanbooru",
-  "private": true,
   "version": "0.0.2-alpha.1",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -17,6 +16,11 @@
     },
     "locales": [
       "zh"
+    ]
+  },
+  "bump": {
+    "after": [
+      "npm publish"
     ]
   },
   "license": "AGPLv3",
