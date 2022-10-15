@@ -2,7 +2,7 @@
   "name": "koishi-plugin-deep-danbooru",
   "description": "AI based multi-label girl image classification system, implemented by using TensorFlow.",
   "private": true,
-  "version": "1.0.0",
+  "version": "0.0.1",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "files": [
