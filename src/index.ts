@@ -5,8 +5,8 @@ export const name = 'deep-danbooru'
 const logger = new Logger(name)
 
 enum actions {
-  PUSH = 'push',
-  STATUS = 'status',
+  PUSH = '/push/',
+  STATUS = '/status/',
 }
 
 export interface Config {
@@ -47,6 +47,7 @@ export function apply(ctx: Context, config: Config) {
       const hfUrl = (options.api?.trimEnd() || config.hfUrl).replace(/\/$/, '')
 
       let imgUrl: string
+
       input = segment.transform(input, {
         image(attrs) {
           imgUrl = attrs.url
@@ -56,6 +57,7 @@ export function apply(ctx: Context, config: Config) {
       if (!imgUrl) {
         return session.text('没有检测到图片，请检查格式并给出图片。')
       }
+      session.send("正在魔法鉴别(´・ω・`)")
 
       let imageBuff: Buffer
       try {
@@ -89,8 +91,6 @@ export function apply(ctx: Context, config: Config) {
           hash: res.data.hash,
         }
       })
-
-      session.send("正在尝试魔法鉴别(´・ω・`)")
       
       const getStatus = async (hash: string) => {
         return await ctx.http.axios(hfUrl + actions.STATUS, {

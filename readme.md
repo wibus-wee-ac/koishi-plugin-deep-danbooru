@@ -13,8 +13,6 @@
 
 ## What's Deep Danbooru?
 
-DeepDanbooru is a AI based multi-label girl image classification system, implemented by using TensorFlow.
-
 DeepDanbooru 是一个基于 TensorFlow 实现的深度卷积神经网络项目，实现画像分类。
 
 ## Reference
