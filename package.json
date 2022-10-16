@@ -1,7 +1,7 @@
 {
   "name": "koishi-plugin-deep-danbooru",
   "description": "Analyzing images via deepdanbooru",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "author": "wibus-wee <wibus@qq.com>",
