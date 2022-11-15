@@ -106,7 +106,7 @@ export function apply(ctx: Context, config: Config) {
           })
         }).then(res => {
           let data = res.data
-          if(res.data.status === 'PENDING') {
+          if(res.data.status !== 'COMPLETE') {
             data = getStatus(hash)
           }
           return data
