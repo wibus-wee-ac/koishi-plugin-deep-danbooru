@@ -41,6 +41,7 @@ export function apply(ctx: Context, config: Config) {
     .command('deepdanbooru <image:text>')
     .alias("鉴赏", '法术鉴赏', '魔法鉴赏', 'deep-danbooru', '鉴赏图片', '鉴赏标签')
     .option('api', '-a <url:string> 输入推送的 API Mirror, 默认使用配置项。')
+    .option('threshold', '-t <threshold:number> Score Threshold, Default 0.5')
     .action(async ({ session, options }, input) => {
       if (!input?.trim()) return session.execute('help deepdanbooru')
 
@@ -74,7 +75,7 @@ export function apply(ctx: Context, config: Config) {
       const body = {
         "action": "predict",
         "fn_index": 0,
-        "data": [`data:image/png;base64,${String(imageBuff.toString('base64'))}`, 0.5],
+        "data": [`data:image/png;base64,${String(imageBuff.toString('base64'))}`, options.threshold || 0.5],
         "session_hash": generate_code(11),
       }
       
