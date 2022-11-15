@@ -14,7 +14,7 @@ export interface Config {
 }
 
 export const Config: Schema<Config> = Schema.object({
-  hfUrl: Schema.string().role('textarea').description('Hugging Face Space 推送接口 <br> 获取方法：打开某一个 space，打开 Developer Tools，转至 Network 标签页，点击 App 中的 Input 上传图片，点击 Submit，此时得到了一个类似于 https://hf.space/embed/user/DeepDanbooru/api/queue/action 的链接，取 https://hf.space/embed/user/DeepDanbooru/api/queue 置入此处').default('https://hf.space/embed/hysts/DeepDanbooru/api/queue'),
+  hfUrl: Schema.string().role('textarea').description('Hugging Face Space 推送接口 <br> 获取方法：打开某一个 space，打开 Developer Tools，转至 Network 标签页，点击 App 中的 Input 上传图片，点击 Submit，此时得到了一个类似于 https://hf.space/embed/user/DeepDanbooru/api/queue/action 的链接，取 https://hf.space/embed/user/DeepDanbooru/api/queue 置入此处').default('https://nocrypt-deepdanbooru-string.hf.space/api/queue'),
 }).description('DeepDanbooru 相关配置')
 
 
@@ -78,7 +78,6 @@ export function apply(ctx: Context, config: Config) {
         "data": [`data:image/png;base64,${String(imageBuff.toString('base64'))}`, options.threshold || 0.5],
         "session_hash": generate_code(11),
       }
-      
       const art = await ctx.http.axios(hfUrl + actions.PUSH, {
         method: 'POST',
         headers: {
@@ -116,7 +115,7 @@ export function apply(ctx: Context, config: Config) {
       }
       const result = await getStatus(art.hash)
       // 获取这条信息的 id，回复
-      const reply = `tags: ${ result.data.data[0].confidences.map((tag: any) => { return tag.label})}`
+      const reply = `tags: ${ result.data.data[2].confidences.map((tag: any) => { return tag.label})}`
       await session.send(segment('quote', { id: session.messageId }) + reply)
     })
 }
